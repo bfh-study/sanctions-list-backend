@@ -7,12 +7,16 @@ import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertEquals;
 
 @Test
-public class ImportText {
+public class ImportTest {
 
-    public void testImport(){
-        ImportContext context = new ImportContext(new SecoProvider());
+    ImportContext context;
+
+    public void secoProviderTest(){
+        context = new ImportContext(new SecoProvider());
         assertEquals(15, context.executeImport(10, 5));
+    }
 
+    public void euProviderTest(){
         context = new ImportContext(new EuProvider());
         assertEquals(5, context.executeImport(10, 5));
     }
