@@ -56,13 +56,7 @@
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>2.17</version>
                     <configuration>
-                        <configLocation>google_checks.xml</configLocation>
-                        <checkstyleRules>
-                            <module name="Indentation">
-                                <property name="basicOffset" value="4"/>
-                                <property name="caseIndent" value="4"/>
-                            </module>
-                        </checkstyleRules>
+                        <configLocation>checkstyle_rules.xml</configLocation>
                         <outputFile>${project.build.directory}/checkstyle.xml</outputFile>
                     </configuration>
                 </plugin>
