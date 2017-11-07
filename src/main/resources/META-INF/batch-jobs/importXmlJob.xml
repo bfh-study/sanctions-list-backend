@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="importXmlJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+    <step id="process">
+        <chunk item-count="10">
+            <reader ref="com.github.bfh.study.slb.job.XmlReader" />
+            <!-- <processor ref=""/> -->
+            <writer ref="com.github.bfh.study.slb.job.ItemWriter" />
+        </chunk>
+    </step>
+</job>
