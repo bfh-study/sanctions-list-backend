@@ -4,7 +4,9 @@ import javax.batch.api.chunk.ItemReader;
 import java.io.Serializable;
 
 /**
+ * write an object to the database.
  *
+ * @author Samuel Ackermann <saemi.ackermann@gmail.com>
  */
 public class XmlReader extends ReaderWriterBase implements ItemReader {
     @Override
