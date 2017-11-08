@@ -1,12 +1,12 @@
 package com.github.bfh.study.slb.job;
 
-import javax.batch.api.chunk.ItemReader;
 import java.io.Serializable;
+import javax.batch.api.chunk.ItemReader;
 
 /**
  * write an object to the database.
  *
- * @author Samuel Ackermann <saemi.ackermann@gmail.com>
+ * @author Samuel Ackermann
  */
 public class XmlReader extends ReaderWriterBase implements ItemReader {
     @Override
@@ -16,7 +16,6 @@ public class XmlReader extends ReaderWriterBase implements ItemReader {
 
     @Override
     public void close() throws Exception {
-        String message = "nothing to close!";
     }
 
     @Override

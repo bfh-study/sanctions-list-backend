@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * write an object to the database.
  *
- * @author Samuel Ackermann <saemi.ackermann@gmail.com>
+ * @author Samuel Ackermann
  */
 public class ItemWriter extends ReaderWriterBase implements javax.batch.api.chunk.ItemWriter {
     @Override
@@ -16,7 +16,6 @@ public class ItemWriter extends ReaderWriterBase implements javax.batch.api.chun
 
     @Override
     public void close() throws Exception {
-        String test = "nothing to close! it is a dummy!";
     }
 
     @Override
