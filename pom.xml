@@ -10,8 +10,6 @@
     <packaging>war</packaging>
 
     <properties>
-        <version.wildfly-swarm>2017.10.0</version.wildfly-swarm>
-        <version.h2>1.4.196</version.h2>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,6 +17,8 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <skipTests>false</skipTests>
         <!-- dependency versions -->
+        <wildfly-swarm.version>2017.10.0</wildfly-swarm.version>
+        <h2.version>1.4.196</h2.version>
         <powermock.version>1.7.3</powermock.version>
     </properties>
 
@@ -27,7 +27,7 @@
             <dependency>
                 <groupId>org.wildfly.swarm</groupId>
                 <artifactId>bom</artifactId>
-                <version>${version.wildfly-swarm}</version>
+                <version>${wildfly-swarm.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -56,8 +56,9 @@
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>2.17</version>
                     <configuration>
-                        <configLocation>google_checks.xml</configLocation>
+                        <configLocation>checkstyle_rules.xml</configLocation>
                         <outputFile>${project.build.directory}/checkstyle.xml</outputFile>
+                        <failOnViolation>false</failOnViolation>
                     </configuration>
                 </plugin>
             </plugins>
@@ -66,7 +67,7 @@
             <plugin>
                 <groupId>org.wildfly.swarm</groupId>
                 <artifactId>wildfly-swarm-plugin</artifactId>
-                <version>${version.wildfly-swarm}</version>
+                <version>${wildfly-swarm.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -93,19 +94,6 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- testing -->
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-testng</artifactId>
-            <version>${powermock.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
-            <version>${powermock.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- WildFly Swarm Fractions -->
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
@@ -119,12 +107,29 @@
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>jpa</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>batch-jberet</artifactId>
+        </dependency>
         <!-- Database -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${version.h2}</version>
+            <version>${h2.version}</version>
             <scope>runtime</scope>
+        </dependency>
+        <!-- testing -->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-testng</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito2</artifactId>
+            <version>${powermock.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

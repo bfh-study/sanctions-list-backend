@@ -72,6 +72,9 @@
           <element id="library" level="project" name="Maven: org.jboss.modules:jboss-modules:1.5.2.Final" />
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.17" />
           <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:batch-jberet:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.common:wildfly-common:1.1.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.batch:jboss-batch-api_1.0_spec:1.0.0.Final" />
           <element id="library" level="project" name="Maven: com.h2database:h2:1.4.196" />
         </element>
       </element>
