@@ -56,7 +56,9 @@
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>2.17</version>
                     <configuration>
+                        <configLocation>checkstyle_rules.xml</configLocation>
                         <outputFile>${project.build.directory}/checkstyle.xml</outputFile>
+                        <failOnViolation>false</failOnViolation>
                     </configuration>
                 </plugin>
             </plugins>
