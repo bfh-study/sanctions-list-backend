@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Root node of the xml file
+ * Root node of the swiss sanctions xml file
  *
  * @author Samuel Ackermann
  */
