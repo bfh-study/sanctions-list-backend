@@ -1,4 +1,4 @@
-package com.github.bfh.study.slb.job;
+package com.github.bfh.study.slb.imports.job;
 
 import java.io.Serializable;
 import java.util.List;

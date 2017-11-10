@@ -2,9 +2,9 @@
 <job id="importXmlJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
     <step id="process">
         <chunk item-count="10">
-            <reader ref="com.github.bfh.study.slb.job.XmlReader" />
+            <reader ref="com.github.bfh.study.slb.imports.job.XmlReader" />
             <!-- <processor ref=""/> -->
-            <writer ref="com.github.bfh.study.slb.job.ItemWriter" />
+            <writer ref="com.github.bfh.study.slb.imports.job.ItemWriter" />
         </chunk>
     </step>
 </job>

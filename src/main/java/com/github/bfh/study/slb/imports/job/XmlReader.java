@@ -1,11 +1,10 @@
-package com.github.bfh.study.slb.job;
+package com.github.bfh.study.slb.imports.job;
 
 import com.github.bfh.study.slb.ImportContext;
 import com.github.bfh.study.slb.imports.parser.PartialXmlParser;
 import com.github.bfh.study.slb.imports.SecoProvider;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import javax.batch.api.chunk.ItemReader;
 
 /**
