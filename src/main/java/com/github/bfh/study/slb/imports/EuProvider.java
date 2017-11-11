@@ -1,7 +1,9 @@
 package com.github.bfh.study.slb.imports;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.github.bfh.study.slb.imports.parser.ProcessingElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author: Dario Carosella
@@ -14,7 +16,7 @@ public class EuProvider implements Import {
     }
 
     @Override
-    public Map<String, Class<?>> getProcessingElements() {
-        return new HashMap<>();
+    public List<ProcessingElement> getProcessingElements() {
+        return new ArrayList<>();
     }
 }

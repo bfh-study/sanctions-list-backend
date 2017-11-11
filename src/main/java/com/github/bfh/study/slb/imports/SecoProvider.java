@@ -1,9 +1,10 @@
 package com.github.bfh.study.slb.imports;
 
+import com.github.bfh.study.slb.imports.parser.ProcessingElement;
 import com.github.bfh.study.slb.provider.seco.entities.SanctionProgram;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author: Dario Carosella
@@ -16,10 +17,9 @@ public class SecoProvider implements Import {
     }
 
     @Override
-    public Map<String, Class<?>> getProcessingElements() {
-        Map<String, Class<?>> classes = new HashMap<>();
-        classes.put("sanctions-program", SanctionProgram.class);
-
-        return classes;
+    public List<ProcessingElement> getProcessingElements() {
+        List<ProcessingElement> elements = new ArrayList<>();
+        elements.add(new ProcessingElement("sanctions-program", SanctionProgram.class));
+        return elements;
     }
 }

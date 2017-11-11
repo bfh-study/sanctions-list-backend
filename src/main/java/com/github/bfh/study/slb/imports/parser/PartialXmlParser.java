@@ -9,6 +9,8 @@ import javax.xml.stream.XMLStreamException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +25,7 @@ public class PartialXmlParser {
 
     private XMLEventReader reader;
 
-    private FileInputStream inputStream;
+    private InputStream inputStream;
 
     private ElementEventFilter eventFilter;
 
@@ -38,12 +40,11 @@ public class PartialXmlParser {
     }
 
     public void open(String pathName) throws FileNotFoundException, XMLStreamException {
-        XMLInputFactory xif = XMLInputFactory.newFactory();
-        inputStream = new FileInputStream(pathName);
-        reader = xif.createFilteredReader(
-                xif.createXMLEventReader(inputStream),
-                eventFilter
-        );
+        open(new FileInputStream(pathName));
+    }
+
+    public void open(URL url) throws IOException, XMLStreamException {
+        open(url.openConnection().getInputStream());
     }
 
     public void close() throws XMLStreamException, IOException {
@@ -61,5 +62,14 @@ public class PartialXmlParser {
             }
         }
         return parsed;
+    }
+
+    private void open(InputStream inputStream) throws XMLStreamException {
+        XMLInputFactory xif = XMLInputFactory.newFactory();
+        this.inputStream = inputStream;
+        reader = xif.createFilteredReader(
+                xif.createXMLEventReader(inputStream),
+                eventFilter
+        );
     }
 }
