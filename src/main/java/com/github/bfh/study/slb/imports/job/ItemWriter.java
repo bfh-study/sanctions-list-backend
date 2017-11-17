@@ -1,14 +1,14 @@
-package com.github.bfh.study.slb.job;
+package com.github.bfh.study.slb.imports.job;
 
 import java.io.Serializable;
-import javax.batch.api.chunk.ItemReader;
+import java.util.List;
 
 /**
  * write an object to the database.
  *
  * @author Samuel Ackermann
  */
-public class XmlReader extends ReaderWriterBase implements ItemReader {
+public class ItemWriter extends ReaderWriterBase implements javax.batch.api.chunk.ItemWriter {
     @Override
     public void open(Serializable checkpoint) throws Exception {
         this.checkpoint = checkpoint;
@@ -19,8 +19,8 @@ public class XmlReader extends ReaderWriterBase implements ItemReader {
     }
 
     @Override
-    public Object readItem() throws Exception {
-        return new Object();
+    public void writeItems(List<Object> items) throws Exception {
+        items.forEach(o -> o.toString());
     }
 
     @Override

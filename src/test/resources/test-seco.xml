@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<swiss-sanctions-list list-type="test-list" date="2017-11-08">
+    <not-interesting>bla</not-interesting>
+    <sanctions-program ssid="1" version-date="2016-02-29" predecessor-version-date="2015-11-17">
+        <program-key lang="eng">Test-E</program-key>
+        <program-key lang="ger">Test-G</program-key>
+        <program-key lang="fre">Test-F</program-key>
+        <program-name lang="ger">Name-G</program-name>
+        <program-name lang="fre">Name-F</program-name>
+        <sanctions-set ssid="12" lang="eng">Sanction set</sanctions-set>
+        <sanctions-set ssid="12" lang="ger">Sanktion</sanctions-set>
+        <origin>EU/ UN</origin>
+    </sanctions-program>
+    <not-interesting>gugugs</not-interesting>
+    <not-interesting>test</not-interesting>
+    <not-interesting>blaba</not-interesting>
+    <sanctions-program ssid="2" version-date="2016-10-12" predecessor-version-date="2017-11-01">
+        <program-key lang="eng">Test-E</program-key>
+        <program-name lang="ger">Name-G</program-name>
+        <sanctions-set ssid="21" lang="eng">Sanction set</sanctions-set>
+        <origin>EU</origin>
+    </sanctions-program>
+</swiss-sanctions-list>
