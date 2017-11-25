@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 @XmlAccessorType(XmlAccessType.FIELD)
 public abstract class SubEntry extends BaseEntry {
 
-    @XmlAttribute(name = "Entity_Id", required = true)
+    @XmlAttribute(name = "Entity_id", required = true)
     private int entityId;
 
     public int getEntityId() {

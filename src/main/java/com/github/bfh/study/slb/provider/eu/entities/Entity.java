@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlElement;
 public class Entity extends BaseEntry {
 
     @XmlAttribute(name = "Type", required = true)
-    private Character type;
+    private String type;
 
     @XmlElement(name = "NAME")
     private List<EntryInfo> names;
@@ -23,7 +23,7 @@ public class Entity extends BaseEntry {
     @XmlElement(name = "BIRTH")
     private List<BirthInfo> birthInfoList;
 
-    public Character getType() {
+    public String getType() {
         return type;
     }
 
