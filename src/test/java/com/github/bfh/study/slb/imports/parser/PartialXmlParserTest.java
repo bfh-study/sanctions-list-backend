@@ -1,7 +1,10 @@
 package com.github.bfh.study.slb.imports.parser;
 
+import com.github.bfh.study.slb.provider.eu.entities.Entity;
 import com.github.bfh.study.slb.provider.seco.entities.SanctionProgram;
 import com.github.bfh.study.slb.provider.seco.entities.SwissSanctionsList;
+import java.net.URI;
+import java.net.URL;
 import org.testng.annotations.Test;
 
 import javax.xml.bind.JAXBContext;
@@ -55,5 +58,21 @@ public class PartialXmlParserTest {
         }
         parser.close();
         assert count == 0 : "the count value should be zero";
+    }
+
+    public void testEuListParsing() throws Exception {
+        List<ProcessingElement> elements = new ArrayList<>(1);
+        elements.add(new ProcessingElement("ENTITY", Entity.class));
+        PartialXmlParser parser = new PartialXmlParser(elements);
+
+        parser.open(URI.create("https://webgate.ec.europa.eu/europeaid/fsd/fsf/public/files/dtdFullSanctionsList/content?token=dG9rZW4tMjAxNw").toURL());
+        Object parsedObject = null;
+        int count = 0;
+        while ((parsedObject = parser.parse()) != null) {
+            assert parsedObject instanceof Entity : "parsed object must be an instance of Entity";
+            count++;
+        }
+        parser.close();
+        assert count > 0 : "the count value should not be zero";
     }
 }
