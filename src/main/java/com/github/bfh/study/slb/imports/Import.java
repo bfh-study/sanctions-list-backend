@@ -5,7 +5,9 @@ import com.github.bfh.study.slb.imports.parser.ProcessingElement;
 import java.util.List;
 
 /**
- * @Author: Dario Carosella
+ * Represents an import provider.
+ *
+ * @author Dario Carosella
  */
 public interface Import {
 

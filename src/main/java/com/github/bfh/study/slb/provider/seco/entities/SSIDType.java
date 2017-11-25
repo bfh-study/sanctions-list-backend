@@ -5,7 +5,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
 /**
- * Created by samuel on 08.11.17.
+ * SSID type.
+ *
+ * @author Samuel Ackermann
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SSIDType {

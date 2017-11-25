@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: Dario Carosella
+ * Processes the EU sanction list.
+ *
+ * @author Dario Carosella
  */
 public class EuProvider implements Import {
 
