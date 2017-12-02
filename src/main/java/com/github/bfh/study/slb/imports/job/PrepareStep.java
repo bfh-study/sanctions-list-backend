@@ -2,16 +2,18 @@ package com.github.bfh.study.slb.imports.job;
 
 import com.github.bfh.study.slb.imports.ImportContext;
 import com.github.bfh.study.slb.imports.SourceNotFoundException;
-import javax.batch.api.Batchlet;
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.context.JobContext;
-import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.batch.api.Batchlet;
+import javax.batch.runtime.BatchStatus;
+import javax.batch.runtime.context.JobContext;
+import javax.inject.Inject;
+
 /**
- * Prepare and configure import context
+ * Prepare and configure import context.
  *
  * @author Samuel Ackermann
  */
@@ -36,8 +38,10 @@ public class PrepareStep implements Batchlet {
         }
 
         return BatchStatus.COMPLETED.toString();
-  }
+    }
 
-  @Override
-  public void stop() throws Exception { throw new NotImplementedException(); }
+    @Override
+    public void stop() throws Exception {
+        throw new NotImplementedException();
+    }
 }

@@ -3,7 +3,7 @@ package com.github.bfh.study.slb.app;
 import io.crnk.core.module.Module;
 
 /**
- * Simple module for the sanction list backend. It encapsulate registration of exception mappers
+ * Simple module for the sanction list backend. It encapsulate registration of exception mappers.
  *
  * @author Samuel Ackermann
  */
