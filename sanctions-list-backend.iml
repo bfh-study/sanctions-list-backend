@@ -20,13 +20,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.wildfly.swarm:batch-jberet:2017.10.0" level="project" />
-    <orderEntry type="library" name="Maven: org.wildfly.common:wildfly-common:1.1.0.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.jboss.spec.javax.batch:jboss-batch-api_1.0_spec:1.0.0.Final" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-api:7.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sun.mail:javax.mail:1.5.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.activation:activation:1.1" level="project" />
@@ -98,11 +96,24 @@
     <orderEntry type="library" name="Maven: org.wildfly.swarm:batch-jberet:2017.10.0" level="project" />
     <orderEntry type="library" name="Maven: org.wildfly.common:wildfly-common:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.spec.javax.batch:jboss-batch-api_1.0_spec:1.0.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.bitbucket.samsamann:rest-core:0.2.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.bitbucket.samsamann:rest-base:0.2.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: io.crnk:crnk-core:2.1.20171003194426" level="project" />
+    <orderEntry type="library" name="Maven: net.jodah:typetools:0.4.4" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.reflections:reflections:0.9.11" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:20.0" level="project" />
+    <orderEntry type="library" name="Maven: io.crnk:crnk-rs:2.1.20171003194426" level="project" />
+    <orderEntry type="library" name="Maven: io.crnk:crnk-jpa:2.1.20171003194426" level="project" />
+    <orderEntry type="library" name="Maven: io.crnk:crnk-meta:2.1.20171003194426" level="project" />
+    <orderEntry type="library" name="Maven: io.crnk:crnk-validation:2.1.20171003194426" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate.validator:hibernate-validator:6.0.2.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml:classmate:1.3.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:1.4.196" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-module-testng:1.7.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-core:1.7.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-reflect:1.7.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.javassist:javassist:3.21.0-GA" level="project" />
+    <orderEntry type="library" name="Maven: org.javassist:javassist:3.21.0-GA" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-module-testng-common:1.7.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:6.9.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.48" level="project" />

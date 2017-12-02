@@ -111,6 +111,12 @@
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>batch-jberet</artifactId>
         </dependency>
+        <!-- REST -->
+        <dependency>
+            <groupId>org.bitbucket.samsamann</groupId>
+            <artifactId>rest-core</artifactId>
+            <version>0.2.0-SNAPSHOT</version>
+        </dependency>
         <!-- Database -->
         <dependency>
             <groupId>com.h2database</groupId>
@@ -132,4 +138,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>allow-snapshots</id>
+            <activation><activeByDefault>true</activeByDefault></activation>
+            <repositories>
+                <repository>
+                    <id>snapshots-repo</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 </project>

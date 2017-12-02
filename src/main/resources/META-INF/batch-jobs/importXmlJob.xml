@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job id="importXmlJob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+    <properties>
+        <property name="source_name" value="dummy" />
+    </properties>
+    <step id ="prepare" next="process">
+        <batchlet ref="prepareBatchlet" />
+    </step>
     <step id="process">
         <chunk item-count="10">
             <reader ref="xmlItemReader" />
