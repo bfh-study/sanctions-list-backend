@@ -1,9 +1,7 @@
 package com.github.bfh.study.slb.imports.job;
 
-import com.github.bfh.study.slb.ImportContext;
+import com.github.bfh.study.slb.imports.ImportContext;
 import com.github.bfh.study.slb.imports.parser.PartialXmlParser;
-import com.github.bfh.study.slb.imports.SecoProvider;
-
 import java.io.Serializable;
 import javax.batch.api.chunk.ItemReader;
 
@@ -19,7 +17,7 @@ public class XmlReader extends ReaderWriterBase implements ItemReader {
     @Override
     public void open(Serializable checkpoint) throws Exception {
         this.checkpoint = checkpoint;
-        ImportContext context = new ImportContext(new SecoProvider());
+        ImportContext context = ImportContext.importContextFactory("SECO");
         parser = new PartialXmlParser(context.getProcessingElements());
         parser.open("");
     }
