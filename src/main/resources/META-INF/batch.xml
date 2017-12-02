@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<batch-artifacts xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+  <ref id="xmlItemReader" class="com.github.bfh.study.slb.imports.job.XmlReader" />
+  <ref id="dbItemWriter" class="com.github.bfh.study.slb.imports.job.ItemWriter" />
+  <ref id="prepareBatchlet" class="com.github.bfh.study.slb.imports.job.PrepareStep" />
+</batch-artifacts>

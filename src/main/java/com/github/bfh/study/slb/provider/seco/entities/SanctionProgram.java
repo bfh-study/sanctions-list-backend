@@ -2,11 +2,11 @@ package com.github.bfh.study.slb.provider.seco.entities;
 
 import com.github.bfh.study.slb.provider.entities.SimpleType;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by samuel on 08.11.17.
@@ -26,6 +26,9 @@ public class SanctionProgram extends SSIDType {
     @XmlElement(required = true)
     private SimpleType origin;
 
+    /**
+     * standard constructor
+     */
     public SanctionProgram() {
         keys = new ArrayList<>();
         names = new ArrayList<>();
