@@ -1,12 +1,12 @@
 package com.github.bfh.study.slb.provider.seco.entities;
 
-import javax.xml.bind.annotation.*;
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.*;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
- * Root node of the swiss sanctions xml file
+ * Root node of the swiss sanctions xml file.
  *
  * @author Samuel Ackermann
  */

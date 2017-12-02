@@ -1,14 +1,14 @@
 package com.github.bfh.study.slb.imports.parser;
 
+import java.util.List;
+import java.util.Optional;
 import javax.xml.stream.EventFilter;
 import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import java.util.List;
-import java.util.Optional;
 
 /**
- * This filter accepts only elements that will unmarshal with JAXB later
+ * This filter accepts only elements that will process with JAXB later.
  *
  * @author Samuel Ackermann
  */
@@ -37,7 +37,8 @@ public class ElementEventFilter implements EventFilter {
             handleStartElement(event.asStartElement());
         } else if (actualElement != null && event.isEndElement()) {
             handleEndElement(event.asEndElement());
-        // actualClass != null means we found a tag in the xml that we will parse, so all sub tags are acceptable
+        // actualClass != null means a tag was found in the xml that we will parse
+        // all sub tags are acceptable
         } else if (actualElement != null) {
             store.decision = true;
         }
@@ -75,7 +76,9 @@ public class ElementEventFilter implements EventFilter {
     }
 
     /**
-     * stores the last decision from the decision tree
+     * stores the last decision from the decision tree.
+     *
+     * @author Samuel Ackermann
      */
     private class DecisionStore {
 

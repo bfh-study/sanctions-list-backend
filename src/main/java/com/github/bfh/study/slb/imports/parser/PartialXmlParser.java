@@ -1,11 +1,5 @@
 package com.github.bfh.study.slb.imports.parser;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -13,6 +7,12 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.stream.XMLEventReader;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Parse a xml file partial. Wraps JAXB unmarshaller and StAX
@@ -29,6 +29,12 @@ public class PartialXmlParser {
 
     private ElementEventFilter eventFilter;
 
+    /**
+     * constructor
+     *
+     * @param processingElements list of elements that should be parsed
+     * @throws JAXBException throws this exception when no JAXB context can be created
+     */
     public PartialXmlParser(List<ProcessingElement> processingElements) throws JAXBException {
         Class<?>[] classes = processingElements.stream()
                 .map(e -> (Class<?>) e.getLinkedClass())
@@ -47,29 +53,36 @@ public class PartialXmlParser {
         open(url.openConnection().getInputStream());
     }
 
+    private void open(InputStream inputStream) throws XMLStreamException {
+        XMLInputFactory xif = XMLInputFactory.newFactory();
+        this.inputStream = inputStream;
+        reader = xif.createFilteredReader(
+            xif.createXMLEventReader(inputStream),
+            eventFilter
+        );
+    }
+
     public void close() throws XMLStreamException, IOException {
         reader.close();
         inputStream.close();
     }
 
+    /**
+     * parsing the xml file partially
+     *
+     * @return parsed object
+     * @throws XMLStreamException If xml reader stream not open
+     * @throws JAXBException If any unexpected errors occur while unmarshalling
+     */
     public Object parse() throws XMLStreamException, JAXBException {
         Object parsed = null;
         boolean stopped = false;
         while (!stopped && reader.hasNext()) {
-            if(reader.peek().isStartElement()) {
+            if (reader.peek().isStartElement()) {
                 parsed = unmarshaller.unmarshal(reader, eventFilter.getActualClass()).getValue();
                 stopped = true;
             }
         }
         return parsed;
-    }
-
-    private void open(InputStream inputStream) throws XMLStreamException {
-        XMLInputFactory xif = XMLInputFactory.newFactory();
-        this.inputStream = inputStream;
-        reader = xif.createFilteredReader(
-                xif.createXMLEventReader(inputStream),
-                eventFilter
-        );
     }
 }
