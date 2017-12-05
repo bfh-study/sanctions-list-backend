@@ -1,11 +1,11 @@
 package com.github.bfh.study.slb.domain.entities;
 
+import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
 
 @Entity
 public class SanctionListImport extends BaseEntity {
