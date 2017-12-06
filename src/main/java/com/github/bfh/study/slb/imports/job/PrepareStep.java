@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.Properties;
 import javax.batch.api.Batchlet;
+import javax.batch.runtime.BatchRuntime;
 import javax.batch.runtime.BatchStatus;
 import javax.batch.runtime.context.JobContext;
 import javax.inject.Inject;
@@ -28,12 +30,14 @@ public class PrepareStep implements Batchlet {
 
     @Override
     public String process() throws Exception {
-        String sourceName = jobContext.getProperties().getProperty(SOURCE_NAME_PROPERTY);
-        Thread.sleep(2000L);
+        Properties properties = BatchRuntime.getJobOperator().getParameters(
+            jobContext.getExecutionId());
+        String sourceName = properties.getProperty(SOURCE_NAME_PROPERTY);
         try {
             jobContext.setTransientUserData(ImportContext.importContextFactory(sourceName));
         } catch (SourceNotFoundException e) {
             logger.warn(String.format("%s Job will stop", e.getMessage()));
+            BatchRuntime.getJobOperator().stop(jobContext.getExecutionId());
             return BatchStatus.FAILED.toString();
         }
 

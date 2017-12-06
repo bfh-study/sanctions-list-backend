@@ -1,7 +1,7 @@
 package com.github.bfh.study.slb.imports;
 
 /**
- * This exception will throw when the source could not be found
+ * This exception will throw when the source could not be found.
  *
  * @author Samuel Ackermann
  */

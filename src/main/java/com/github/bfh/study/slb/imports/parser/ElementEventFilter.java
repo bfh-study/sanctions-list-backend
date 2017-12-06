@@ -46,6 +46,11 @@ public class ElementEventFilter implements EventFilter {
         return store.decision;
     }
 
+    /**
+     * returns actual processing class.
+     *
+     * @return Class actual class
+     */
     public Class<?> getActualClass() {
         if (actualElement != null) {
             return actualElement.getLinkedClass();
