@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author: Dario Carosella
+ * Processes the Swiss sanction list.
+ *
+ * @author Dario Carosella
  */
 public class SecoProvider implements Import {
 

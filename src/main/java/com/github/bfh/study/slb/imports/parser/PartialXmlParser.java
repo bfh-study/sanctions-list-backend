@@ -15,7 +15,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 
 /**
- * Parse a xml file partial. Wraps JAXB unmarshaller and StAX
+ * Parse a xml file partial. Wraps JAXB unmarshaller and StAX.
  *
  * @author Samuel Ackermann
  */
@@ -30,7 +30,7 @@ public class PartialXmlParser {
     private ElementEventFilter eventFilter;
 
     /**
-     * constructor
+     * constructor.
      *
      * @param processingElements list of elements that should be parsed
      * @throws JAXBException throws this exception when no JAXB context can be created
@@ -68,7 +68,7 @@ public class PartialXmlParser {
     }
 
     /**
-     * parsing the xml file partially
+     * parsing the xml file partially.
      *
      * @return parsed object
      * @throws XMLStreamException If xml reader stream not open
