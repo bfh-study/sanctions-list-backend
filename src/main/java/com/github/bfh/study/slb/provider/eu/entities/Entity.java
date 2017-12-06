@@ -23,6 +23,12 @@ public class Entity extends BaseEntry {
     @XmlElement(name = "BIRTH")
     private List<BirthInfo> birthInfoList;
 
+    @XmlElement(name = "PASSPORT")
+    private List<PassportInfo> passportInfoList;
+
+    @XmlElement(name = "CITIZEN")
+    private CitizenInfo citizenInfo;
+
     public String getType() {
         return type;
     }
@@ -33,5 +39,13 @@ public class Entity extends BaseEntry {
 
     public List<BirthInfo> getBirthInfoList() {
         return birthInfoList;
+    }
+
+    public List<PassportInfo> getPassportInfoList() {
+        return passportInfoList;
+    }
+
+    public CitizenInfo getCitizenInfo() {
+        return citizenInfo;
     }
 }
