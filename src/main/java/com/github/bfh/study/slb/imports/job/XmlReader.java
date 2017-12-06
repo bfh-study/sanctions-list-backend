@@ -1,6 +1,6 @@
 package com.github.bfh.study.slb.imports.job;
 
-import com.github.bfh.study.slb.ImportContext;
+import com.github.bfh.study.slb.imports.ImportContext;
 import com.github.bfh.study.slb.imports.parser.PartialXmlParser;
 import java.io.Serializable;
 import javax.batch.api.chunk.ItemReader;

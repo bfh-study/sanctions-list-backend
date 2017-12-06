@@ -14,3 +14,6 @@ swarm:
     jdbc-job-repositories:
       jobRepo:
         data-source: "defaultDB"
+samsamann:
+  rest:
+    package-scan: "com.github.bfh.study.slb.domain"
