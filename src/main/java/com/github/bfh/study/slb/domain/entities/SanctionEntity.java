@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
 
 @Entity
-public class SanctionEntity {
+public class SanctionEntity extends BaseEntity {
 
     @OneToMany
     private List<EntityInfo> entityInfoList;

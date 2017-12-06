@@ -1,9 +1,10 @@
 package com.github.bfh.study.slb.domain.entities;
 
 import javax.persistence.Entity;
+import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
 
 @Entity
-public class EntityInfo {
+public class EntityInfo extends BaseEntity {
 
     private String firstName;
 
