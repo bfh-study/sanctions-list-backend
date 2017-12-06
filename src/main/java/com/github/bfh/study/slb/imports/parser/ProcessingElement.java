@@ -1,7 +1,7 @@
 package com.github.bfh.study.slb.imports.parser;
 
 /**
- * Defines which element will be process and converted in the linked class
+ * Defines which element will be process and converted in the linked class.
  *
  * @author Samuel Ackermann
  */

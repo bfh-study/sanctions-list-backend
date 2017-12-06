@@ -1,10 +1,11 @@
 package com.github.bfh.study.slb.domain.entities;
 
+import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
 
 @Entity
 public class SanctionEntity extends BaseEntity {
