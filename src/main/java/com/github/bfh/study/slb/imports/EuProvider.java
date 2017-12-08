@@ -4,6 +4,7 @@ import com.github.bfh.study.slb.imports.parser.ProcessingElement;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
 
 /**
  * Processes the EU sanction list.
@@ -15,6 +16,11 @@ public class EuProvider implements Import {
     @Override
     public int doSomeStuff(int number1, int number2) {
         return number1 - number2;
+    }
+
+    @Override
+    public BaseEntity convertEntity(Object o) {
+        return null;
     }
 
     @Override
