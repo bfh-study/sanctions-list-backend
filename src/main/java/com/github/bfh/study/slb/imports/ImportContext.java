@@ -3,6 +3,8 @@ package com.github.bfh.study.slb.imports;
 import com.github.bfh.study.slb.imports.parser.ProcessingElement;
 
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 /**
  * Context of the import process.
@@ -13,8 +15,13 @@ public class ImportContext {
 
     private Import importer;
 
+    private final EntityManager entityManager;
+
     private ImportContext(Import importer) {
         this.importer = importer;
+        entityManager = Persistence.createEntityManagerFactory("defaultUnit")
+            .createEntityManager();
+
     }
 
     public int executeImport(int number1, int number2) {
@@ -23,6 +30,10 @@ public class ImportContext {
 
     public List<ProcessingElement> getProcessingElements() {
         return importer.getProcessingElements();
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
     /**
