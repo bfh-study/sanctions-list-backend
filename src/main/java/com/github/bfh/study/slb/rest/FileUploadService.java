@@ -20,9 +20,9 @@ import java.util.Map;
  * @author Dario Carosella
  */
 @Path("file")
-public class FileUploaderService {
+public class FileUploadService {
 
-    private static final Logger _log = LoggerFactory.getLogger(FileUploaderService.class);
+    private static final Logger _log = LoggerFactory.getLogger(FileUploadService.class);
     private static final String SERVER_UPLOAD_LOCATION_FOLDER = "C://Users/Dario/Desktop/tmp/";
 
     /**
@@ -69,7 +69,6 @@ public class FileUploaderService {
         _log.info("Starting fileUploader for " + slSource + " source");
 
         Map<String, List<InputPart>> formData = input.getFormDataMap();
-
         List<InputPart> inputParts = formData.get("file");
 
         for (InputPart inputPart : inputParts) {
@@ -117,7 +116,8 @@ public class FileUploaderService {
             }
         }
 
-        return "randomName";
+        _log.warn("No fileName found. Set file name to randomFileName.xml");
+        return "randomFileName.xml";
     }
 
     /**
