@@ -1,6 +1,5 @@
 package com.github.bfh.study.slb.rest;
 
-import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.slf4j.Logger;
@@ -16,7 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * REST interface for file uploader
+ * File Upload Service
+ *
+ * @author Dario Carosella
  */
 @Path("file")
 public class FileUploaderService {
@@ -27,57 +28,82 @@ public class FileUploaderService {
     /**
      * Test REST interface
      *
-     * @return "Hellllllo jööööööööööööggu"
+     * @return "API is up and running"
      */
     @GET
     @Path("test")
-    public Response sayHello(){
-        return Response.status(Status.OK).entity("Hellllllo Jööööööööggu").build();
+    public Response isRunning(){
+        _log.info("Caling API Tester");
+        return Response.status(Status.OK).entity("API is up and running").build();
     }
 
+    /**
+     * Handle Cross-Origin Resource Sharing (CORS)
+     *
+     * @return Status.OK
+     */
     @OPTIONS
     @Path("upload")
     public Response uploadFile(){
+        _log.info("Calling the method, 'OPTIONS' and response with CORS");
         return Response
                 .status(Status.OK)
-                .header("Access-Control-Allow-Origin", "http://localhost:4200")
-                .header("Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS")
-                .header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "POST")
+                .build();
     }
 
+    /**
+     * Uploading file to server
+     *
+     * @param input
+     * @return Status.OK
+     */
     @POST
     @Path("upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response uploadFile(MultipartFormDataInput input) {
+    public Response uploadFile(
+            MultipartFormDataInput input,
+            @QueryParam("slSource") String slSource) {
+
+        _log.info("Starting fileUploader for " + slSource + " source");
 
         Map<String, List<InputPart>> formData = input.getFormDataMap();
+
         List<InputPart> inputParts = formData.get("file");
-        inputParts.addAll(formData.get("slSource"));
 
         for (InputPart inputPart : inputParts) {
             try{
                 MultivaluedMap<String, String> headers = inputPart.getHeaders();
-                if(headers.containsKey("Content-Type")){
-                    String fileName = parseFileName(headers);
 
-                    InputStream inputStream = inputPart.getBody(InputStream.class, null);
+                String fileName = parseFileName(headers);
 
-                    fileName = SERVER_UPLOAD_LOCATION_FOLDER + fileName;
+                InputStream inputStream = inputPart.getBody(InputStream.class, null);
 
-                    saveFile(inputStream, fileName);
-                } else{
-                    String slSource = getSlSource(headers);
-                }
+                _log.info("Uploading file, " + fileName + " to server");
+
+                fileName = SERVER_UPLOAD_LOCATION_FOLDER + fileName;
+                saveFile(inputStream, fileName);
             } catch(IOException ex){
                 _log.error(ex.getMessage());
             }
         }
 
+        _log.info("upload was successful");
+
         return Response
                 .status(Status.OK)
+                .header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Methods", "POST")
                 .build();
     }
 
+    /**
+     * Get the fileName
+     *
+     * @param headers
+     * @return fileName
+     */
     private String parseFileName(MultivaluedMap<String, String> headers){
 
         String[] contentDispositionHeader = headers.getFirst("Content-Disposition").split(";");
@@ -94,22 +120,11 @@ public class FileUploaderService {
         return "randomName";
     }
 
-    private String getSlSource(MultivaluedMap<String, String> headers){
-
-        String[] contentDispositionHeader = headers.getFirst("Content-Disposition").split(";");
-
-        for (String name : contentDispositionHeader){
-            if((name.trim().startsWith("name="))){
-                String[] tmp = name.split("=");
-                String fileName = tmp[1].trim().replaceAll("\"", "");
-
-                return fileName;
-            }
-        }
-
-        return "NO FOUND!";
-    }
-
+    /**
+     * Save file
+     * @param inputStream
+     * @param fileName
+     */
     private void saveFile(InputStream inputStream, String fileName){
         try{
             OutputStream outputStream = new FileOutputStream(new File(fileName));
