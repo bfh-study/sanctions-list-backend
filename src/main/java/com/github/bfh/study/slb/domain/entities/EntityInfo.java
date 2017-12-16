@@ -4,8 +4,15 @@ import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
 
 import javax.persistence.Entity;
 
+/**
+ * information about a entity. Like names, function or title.
+ *
+ * @author Samuel Ackermann
+ */
 @Entity
 public class EntityInfo extends BaseEntity {
+
+    private int sourceId;
 
     private String firstName;
 
@@ -20,6 +27,25 @@ public class EntityInfo extends BaseEntity {
     private String function;
 
     private String language;
+
+    /**
+     * default constructor (for persisting purpose).
+     */
+    EntityInfo(){
+    }
+
+    /**
+     * constructor.
+     *
+     * @param sourceId identifier of the source(EU, SECO, ..)
+     */
+    public EntityInfo(int sourceId) {
+        this.sourceId = sourceId;
+    }
+
+    public int getSourceId() {
+        return sourceId;
+    }
 
     public String getFirstName() {
         return firstName;
