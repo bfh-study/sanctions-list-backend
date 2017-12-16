@@ -23,7 +23,7 @@ import java.util.Map;
 public class FileUploadService {
 
     private static final Logger _log = LoggerFactory.getLogger(FileUploadService.class);
-    private static final String SERVER_UPLOAD_LOCATION_FOLDER = "src/main/resources/upload/";
+    private static final String SERVER_UPLOAD_LOCATION_FOLDER = "src/main/resources/uploads/";
 
     /**
      * Test REST interface
