@@ -23,7 +23,7 @@ import java.util.Map;
 public class FileUploadService {
 
     private static final Logger _log = LoggerFactory.getLogger(FileUploadService.class);
-    private static final String SERVER_UPLOAD_LOCATION_FOLDER = "C://Users/Dario/Desktop/tmp/";
+    private static final String SERVER_UPLOAD_LOCATION_FOLDER = "src/main/resources/upload/";
 
     /**
      * Test REST interface
@@ -32,7 +32,7 @@ public class FileUploadService {
      */
     @GET
     @Path("test")
-    public Response isRunning(){
+    public Response isRunning() {
         _log.info("Caling API Tester");
         return Response.status(Status.OK).entity("API is up and running").build();
     }
@@ -44,7 +44,7 @@ public class FileUploadService {
      */
     @OPTIONS
     @Path("upload")
-    public Response uploadFile(){
+    public Response uploadFile() {
         _log.info("Calling the method, 'OPTIONS' and response with CORS");
         return Response
                 .status(Status.OK)
@@ -70,21 +70,30 @@ public class FileUploadService {
 
         Map<String, List<InputPart>> formData = input.getFormDataMap();
         List<InputPart> inputParts = formData.get("file");
+        InputStream inputStream = null;
 
         for (InputPart inputPart : inputParts) {
-            try{
+            try {
                 MultivaluedMap<String, String> headers = inputPart.getHeaders();
 
                 String fileName = parseFileName(headers);
 
-                InputStream inputStream = inputPart.getBody(InputStream.class, null);
+                inputStream = inputPart.getBody(InputStream.class, null);
 
                 _log.info("Uploading file, " + fileName + " to server");
 
                 fileName = SERVER_UPLOAD_LOCATION_FOLDER + fileName;
                 saveFile(inputStream, fileName);
-            } catch(IOException ex){
+            } catch (IOException ex) {
                 _log.error(ex.getMessage());
+            } finally {
+                if (inputStream != null) {
+                    try {
+                        inputStream.close();
+                    } catch (IOException ex) {
+                        _log.error(ex.getMessage());
+                    }
+                }
             }
         }
 
@@ -103,12 +112,12 @@ public class FileUploadService {
      * @param headers
      * @return fileName
      */
-    private String parseFileName(MultivaluedMap<String, String> headers){
+    private String parseFileName(MultivaluedMap<String, String> headers) {
 
         String[] contentDispositionHeader = headers.getFirst("Content-Disposition").split(";");
 
-        for (String name : contentDispositionHeader){
-            if((name.trim().startsWith("filename"))){
+        for (String name : contentDispositionHeader) {
+            if ((name.trim().startsWith("filename"))) {
                 String[] tmp = name.split("=");
                 String fileName = tmp[1].trim().replaceAll("\"", "");
 
@@ -122,24 +131,34 @@ public class FileUploadService {
 
     /**
      * Save file
+     *
      * @param inputStream
      * @param fileName
      */
-    private void saveFile(InputStream inputStream, String fileName){
-        try{
-            OutputStream outputStream = new FileOutputStream(new File(fileName));
+    private void saveFile(InputStream inputStream, String fileName) {
+        OutputStream outputStream = null;
+        try {
+            outputStream = new FileOutputStream(new File(fileName));
             int read = 0;
             byte[] bytes = new byte[1024];
 
             outputStream = new FileOutputStream(new File(fileName));
-            while ((read = inputStream.read(bytes)) != -1){
+            while ((read = inputStream.read(bytes)) != -1) {
                 outputStream.write(bytes, 0, read);
             }
 
             outputStream.flush();
             outputStream.close();
-        }catch (IOException ex){
+        } catch (IOException ex) {
             _log.error(ex.getMessage());
+        } finally {
+            try {
+                if (outputStream != null) outputStream.close();
+                if (inputStream != null) inputStream.close();
+            } catch (IOException ex) {
+                _log.error(ex.getMessage());
+            }
         }
     }
 }
+
