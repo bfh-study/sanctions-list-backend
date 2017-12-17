@@ -2,6 +2,7 @@ package com.github.bfh.study.slb.provider.seco.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -27,8 +28,12 @@ public class SwissSanctionsList {
     @XmlElement(name = "sanctions-program")
     private List<SanctionProgram> sanctionPrograms;
 
+    @XmlElement(name = "target")
+    private List<Target> targets;
+
     public SwissSanctionsList() {
         sanctionPrograms = new ArrayList<>();
+        targets = new ArrayList<>();
     }
 
     public XMLGregorianCalendar getDate() {
@@ -41,5 +46,9 @@ public class SwissSanctionsList {
 
     public List<SanctionProgram> getSanctionPrograms() {
         return sanctionPrograms;
+    }
+
+    public List<Target> getTargets() {
+        return targets;
     }
 }

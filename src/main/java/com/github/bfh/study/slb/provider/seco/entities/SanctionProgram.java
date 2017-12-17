@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * Represents a sanction program.
@@ -27,6 +29,9 @@ public class SanctionProgram extends SSIDType {
 
     @XmlElement(required = true)
     private SimpleType origin;
+
+    @XmlAttribute(required = true, name = "version-date")
+    private XMLGregorianCalendar date;
 
     /**
      * standard constructor.
@@ -51,5 +56,9 @@ public class SanctionProgram extends SSIDType {
 
     public SimpleType getOrigin() {
         return origin;
+    }
+
+    public XMLGregorianCalendar getDate() {
+        return date;
     }
 }
