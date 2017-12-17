@@ -31,7 +31,8 @@ public class PrepareStep implements Batchlet {
     @Override
     public String process() throws Exception {
         Properties properties = BatchRuntime.getJobOperator().getParameters(
-            jobContext.getExecutionId());
+            jobContext.getExecutionId()
+        );
         String sourceName = properties.getProperty(SOURCE_NAME_PROPERTY);
         try {
             jobContext.setTransientUserData(ImportContext.importContextFactory(sourceName));

@@ -1,8 +1,13 @@
 package com.github.bfh.study.slb.imports;
 
+import com.github.bfh.study.slb.EntityManagerUtil;
 import com.github.bfh.study.slb.imports.parser.ProcessingElement;
 
+import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
+
 import java.util.List;
+import javax.persistence.EntityManager;
+
 
 /**
  * Context of the import process.
@@ -13,16 +18,23 @@ public class ImportContext {
 
     private Import importer;
 
+    private final EntityManager entityManager;
+
     private ImportContext(Import importer) {
         this.importer = importer;
-    }
-
-    public int executeImport(int number1, int number2) {
-        return importer.doSomeStuff(number1, number2);
+        entityManager = EntityManagerUtil.instance().getEntityManager();
     }
 
     public List<ProcessingElement> getProcessingElements() {
         return importer.getProcessingElements();
+    }
+
+    public BaseEntity convertEntity(Object object) {
+        return importer.convertEntity(object);
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
     /**
@@ -39,6 +51,9 @@ public class ImportContext {
         switch (sourceName) {
             case "SECO":
                 importer = new SecoProvider();
+                break;
+            case "EU":
+                importer = new EuProvider();
                 break;
             default:
                 throw new SourceNotFoundException(sourceName);

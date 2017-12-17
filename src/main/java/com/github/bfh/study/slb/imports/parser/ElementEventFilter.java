@@ -16,22 +16,34 @@ public class ElementEventFilter implements EventFilter {
 
     private ProcessingElement actualElement;
 
+    private int level;
+
+    private int capturedLevel;
+
     private DecisionStore store;
 
     private List<ProcessingElement> interestedElements;
 
     public ElementEventFilter(List<ProcessingElement> interestedElements) {
         this.interestedElements = interestedElements;
+        level = 0;
+        capturedLevel = 0;
     }
 
     @Override
     public boolean accept(XMLEvent event) {
-        // Why a store? It could be that the same event is fired several times
+        // Store the event internal?
+        // Yes, because it could be that the same event is fired several times
         if (store != null && store.event.equals(event)) {
             return store.decision;
         }
         // create new store for storing decision
         store = new DecisionStore(false, event);
+
+        // Store level
+        if (event.isStartElement()) {
+            level++;
+        }
 
         if (actualElement == null && event.isStartElement()) {
             handleStartElement(event.asStartElement());
@@ -41,6 +53,10 @@ public class ElementEventFilter implements EventFilter {
         // all sub tags are acceptable
         } else if (actualElement != null) {
             store.decision = true;
+        }
+        // Store level
+        if (event.isEndElement()) {
+            level--;
         }
 
         return store.decision;
@@ -60,7 +76,8 @@ public class ElementEventFilter implements EventFilter {
 
     private void handleStartElement(StartElement startElement) {
         Optional<ProcessingElement> optional = searchClass(startElement.getName().getLocalPart());
-        if (optional.isPresent()) {
+        if (optional.isPresent() && actualElement == null) {
+            capturedLevel = level;
             actualElement = optional.get();
             store.decision = true;
         }
@@ -68,8 +85,9 @@ public class ElementEventFilter implements EventFilter {
 
     private void handleEndElement(EndElement endElement) {
         String actualTagName = actualElement.getTagName();
-        if (actualTagName.equals(endElement.getName().getLocalPart())) {
+        if (actualTagName.equals(endElement.getName().getLocalPart()) && capturedLevel == level) {
             actualElement = null;
+            capturedLevel = 0;
         }
         store.decision = true;
     }

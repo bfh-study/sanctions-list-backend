@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlElement;
 public class CitizenInfo extends SubEntry {
 
     @XmlElement(name = "COUNTRY")
-    private Character[] countryIsoCode;
+    private String countryIsoCode;
 
-    public Character[] getCountryIsoCode() {
+    public String getCountryIsoCode() {
         return countryIsoCode;
     }
 }

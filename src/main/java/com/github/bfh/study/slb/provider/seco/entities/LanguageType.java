@@ -7,11 +7,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
 /**
- * Created by samuel on 08.11.17.
+ * Represents a language(ISO).
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class LanguageType extends SimpleType {
 
     @XmlAttribute(required = true, name = "lang")
     private String language;
+
+    public String getLanguage() {
+        return language;
+    }
 }

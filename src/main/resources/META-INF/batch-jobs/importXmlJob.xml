@@ -6,7 +6,7 @@
     <step id="process">
         <chunk item-count="10">
             <reader ref="xmlItemReader" />
-            <!-- <processor ref=""/> -->
+            <processor ref="entityProcessor"/>
             <writer ref="dbItemWriter" />
         </chunk>
     </step>

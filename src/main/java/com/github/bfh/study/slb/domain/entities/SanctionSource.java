@@ -20,6 +20,9 @@ public class SanctionSource extends BaseEntity {
         return name;
     }
 
+    /**
+     * List of possible sources.
+     */
     public enum SourceName {
         EU,
         SECO
