@@ -25,10 +25,6 @@ public class ImportContext {
         entityManager = EntityManagerUtil.instance().getEntityManager();
     }
 
-    public int executeImport(int number1, int number2) {
-        return importer.doSomeStuff(number1, number2);
-    }
-
     public List<ProcessingElement> getProcessingElements() {
         return importer.getProcessingElements();
     }
