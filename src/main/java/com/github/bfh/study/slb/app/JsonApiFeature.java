@@ -1,5 +1,7 @@
 package com.github.bfh.study.slb.app;
 
+import com.github.bfh.study.slb.EntityManagerUtil;
+
 import org.bitbucket.samsamann.rest.base.SimpleTransactionRunner;
 import org.bitbucket.samsamann.rest.core.RestFeature;
 
@@ -23,6 +25,7 @@ public class JsonApiFeature implements Feature {
 
     @Override
     public boolean configure(FeatureContext featureContext) {
+        EntityManagerUtil.instance(entityManager);
         RestFeature restFeature =
             new RestFeature(entityManager, new SimpleTransactionRunner(entityManager));
 
