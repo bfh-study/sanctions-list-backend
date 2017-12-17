@@ -19,7 +19,7 @@ public class BirthInfo extends SubEntry {
     private String country;
 
     public LocalDate getDate() {
-        if (date == null) {
+        if (date == null || date.getMonth() < 1 || date.getMonth() > 12) {
             return null;
         }
 

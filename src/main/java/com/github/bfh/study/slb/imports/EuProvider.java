@@ -44,7 +44,7 @@ public class EuProvider implements Import {
 
     private SanctionProgram convertToSanctionProgram(Entity obj) {
         SanctionProgram sanctionProgram = new SanctionProgram(
-            Integer.getInteger(obj.getProgramme()),
+            Integer.getInteger(obj.getProgramme(), -1),
             obj.getProgramme()
         );
         //sanctionProgram.addShortDescription(
@@ -56,10 +56,14 @@ public class EuProvider implements Import {
         sanctionProgram.setDate(LocalDate.of(date.getYear(),date.getMonth(), date.getDay()));
         sanctionProgram.setOrigin(SUPPORTED_ORIGIN);
 
+        String countryCode = "no country found";
+        if (obj.getCitizenInfo() != null) {
+            countryCode = obj.getCitizenInfo().getCountryIsoCode();
+        }
         SanctionEntity sanctionEntity = new SanctionEntity(
             obj.getId(),
             obj.getProgramme(),
-            obj.getCitizenInfo().getCountryIsoCode()
+            countryCode
         );
         obj.getNames().forEach(name -> {
             EntityInfo entityInfo = new EntityInfo(name.getId());

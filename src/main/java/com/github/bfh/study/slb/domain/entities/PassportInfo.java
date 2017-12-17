@@ -29,7 +29,7 @@ public class PassportInfo extends BaseEntity {
      * @param country country of issuance
      */
     public PassportInfo(String number, String country) {
-        this.number = number;
+        this.number = number.substring(0, Math.min(number.length(), 255));
         this.country = country;
     }
 }

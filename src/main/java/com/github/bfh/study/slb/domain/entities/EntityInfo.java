@@ -2,7 +2,9 @@ package com.github.bfh.study.slb.domain.entities;
 
 import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 
 /**
  * information about a entity. Like names, function or title.
@@ -24,6 +26,8 @@ public class EntityInfo extends BaseEntity {
 
     private String title;
 
+    @Lob
+    @Column(columnDefinition="TEXT")
     private String function;
 
     private String language;

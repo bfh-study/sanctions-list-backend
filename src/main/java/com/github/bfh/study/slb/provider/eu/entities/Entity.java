@@ -1,5 +1,6 @@
 package com.github.bfh.study.slb.provider.eu.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -28,6 +29,12 @@ public class Entity extends BaseEntry {
 
     @XmlElement(name = "CITIZEN")
     private CitizenInfo citizenInfo;
+
+    public Entity() {
+        names = new ArrayList<>();
+        birthInfoList = new ArrayList<>();
+        passportInfoList = new ArrayList<>();
+    }
 
     public String getType() {
         return type;
