@@ -54,9 +54,9 @@ public class FileUploadService {
     }
 
     /**
-     * Uploading file to server
      *
-     * @param input
+     * @param input file inormation
+     * @param slSource the provider
      * @return Status.OK
      */
     @POST
@@ -109,41 +109,42 @@ public class FileUploadService {
     /**
      * Get the fileName
      *
-     * @param headers
+     * @param headers information from the UploadForm
      * @return fileName
      */
     private String parseFileName(MultivaluedMap<String, String> headers) {
 
         String[] contentDispositionHeader = headers.getFirst("Content-Disposition").split(";");
+        String fileName = "randomFileName.xml";
 
         for (String name : contentDispositionHeader) {
             if ((name.trim().startsWith("filename"))) {
                 String[] tmp = name.split("=");
-                String fileName = tmp[1].trim().replaceAll("\"", "");
+                fileName = tmp[1].trim().replaceAll("\"", "");
 
                 return fileName;
             }
         }
 
         logger.warn("No fileName found. Set file name to randomFileName.xml");
-        return "randomFileName.xml";
+        return fileName;
     }
 
     /**
      * Save file
      *
-     * @param inputStream
-     * @param fileName
+     * @param inputStream the Data of the file
+     * @param fileName the name of the file
      */
     private void saveFile(InputStream inputStream, String fileName) {
         OutputStream outputStream = null;
         try {
             outputStream = new FileOutputStream(new File(fileName));
-            int read = 0;
+            int read;
             byte[] bytes = new byte[1024];
 
             outputStream = new FileOutputStream(new File(fileName));
-            while ((read = inputStream.read(bytes)) != -1) {
+            while (-1 != (read = inputStream.read(bytes))) {
                 outputStream.write(bytes, 0, read);
             }
 
