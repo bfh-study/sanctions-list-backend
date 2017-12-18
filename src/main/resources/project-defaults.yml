@@ -5,7 +5,7 @@ swarm:
     data-sources:
       defaultDB:
         user-name: "sa"
-        connection-url: "jdbc:h2:tcp://localhost:1818/test"
+        connection-url: "jdbc:h2:tcp://localhost:1521/test"
         driver-name: "h2"
   ds:
     name: "defaultDB"
