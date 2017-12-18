@@ -124,6 +124,11 @@
             <version>${h2.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- Search engine -->
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>hibernate-search</artifactId>
+        </dependency>
         <!-- testing -->
         <dependency>
             <groupId>org.powermock</groupId>
