@@ -33,7 +33,7 @@ public class FileUploadService {
     @GET
     @Path("test")
     public Response isRunning() {
-        logger.info("Caling API Tester");
+        logger.info("Calling API Tester");
         return Response.status(Status.OK).entity("API is up and running").build();
     }
 
@@ -54,8 +54,9 @@ public class FileUploadService {
     }
 
     /**
+     *  File uploader
      *
-     * @param input file inormation
+     * @param input file information
      * @param slSource the provider
      * @return Status.OK
      */

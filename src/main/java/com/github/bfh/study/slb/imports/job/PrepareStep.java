@@ -29,7 +29,7 @@ public class PrepareStep implements Batchlet {
     private JobContext jobContext;
 
     @Override
-    public String process() throws Exception {
+    public String process() {
         Properties properties = BatchRuntime.getJobOperator().getParameters(
             jobContext.getExecutionId());
         String sourceName = properties.getProperty(SOURCE_NAME_PROPERTY);
@@ -45,7 +45,7 @@ public class PrepareStep implements Batchlet {
     }
 
     @Override
-    public void stop() throws Exception {
+    public void stop() {
         throw new NotImplementedException();
     }
 }
