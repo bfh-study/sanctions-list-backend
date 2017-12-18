@@ -22,7 +22,7 @@ import java.util.Map;
 @Path("file")
 public class FileUploadService {
 
-    private static final Logger _log = LoggerFactory.getLogger(FileUploadService.class);
+    private static final Logger logger = LoggerFactory.getLogger(FileUploadService.class);
     private static final String SERVER_UPLOAD_LOCATION_FOLDER = "src/main/resources/uploads/";
 
     /**
@@ -33,7 +33,7 @@ public class FileUploadService {
     @GET
     @Path("test")
     public Response isRunning() {
-        _log.info("Caling API Tester");
+        logger.info("Caling API Tester");
         return Response.status(Status.OK).entity("API is up and running").build();
     }
 
@@ -45,7 +45,7 @@ public class FileUploadService {
     @OPTIONS
     @Path("upload")
     public Response uploadFile() {
-        _log.info("Calling the method, 'OPTIONS' and response with CORS");
+        logger.info("Calling the method, 'OPTIONS' and response with CORS");
         return Response
                 .status(Status.OK)
                 .header("Access-Control-Allow-Origin", "*")
@@ -66,7 +66,7 @@ public class FileUploadService {
             MultipartFormDataInput input,
             @QueryParam("slSource") String slSource) {
 
-        _log.info("Starting fileUploader for " + slSource + " source");
+        logger.info("Starting fileUploader for " + slSource + " source");
 
         Map<String, List<InputPart>> formData = input.getFormDataMap();
         List<InputPart> inputParts = formData.get("file");
@@ -80,24 +80,24 @@ public class FileUploadService {
 
                 inputStream = inputPart.getBody(InputStream.class, null);
 
-                _log.info("Uploading file, " + fileName + " to server");
+                logger.info("Uploading file, " + fileName + " to server");
 
                 fileName = SERVER_UPLOAD_LOCATION_FOLDER + fileName;
                 saveFile(inputStream, fileName);
             } catch (IOException ex) {
-                _log.error(ex.getMessage());
+                logger.error(ex.getMessage());
             } finally {
                 if (inputStream != null) {
                     try {
                         inputStream.close();
                     } catch (IOException ex) {
-                        _log.error(ex.getMessage());
+                        logger.error(ex.getMessage());
                     }
                 }
             }
         }
 
-        _log.info("upload was successful");
+        logger.info("upload was successful");
 
         return Response
                 .status(Status.OK)
@@ -125,7 +125,7 @@ public class FileUploadService {
             }
         }
 
-        _log.warn("No fileName found. Set file name to randomFileName.xml");
+        logger.warn("No fileName found. Set file name to randomFileName.xml");
         return "randomFileName.xml";
     }
 
@@ -150,13 +150,13 @@ public class FileUploadService {
             outputStream.flush();
             outputStream.close();
         } catch (IOException ex) {
-            _log.error(ex.getMessage());
+            logger.error(ex.getMessage());
         } finally {
             try {
                 if (outputStream != null) outputStream.close();
                 if (inputStream != null) inputStream.close();
             } catch (IOException ex) {
-                _log.error(ex.getMessage());
+                logger.error(ex.getMessage());
             }
         }
     }
