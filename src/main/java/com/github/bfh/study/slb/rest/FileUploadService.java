@@ -5,17 +5,26 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.List;
+import java.util.Map;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.OPTIONS;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import java.io.*;
-import java.util.List;
-import java.util.Map;
 
 /**
- * File Upload Service
+ * File Upload Service.
  *
  * @author Dario Carosella
  */
@@ -26,7 +35,7 @@ public class FileUploadService {
     private static final String SERVER_UPLOAD_LOCATION_FOLDER = "src/main/resources/uploads/";
 
     /**
-     * Test REST interface
+     * Test REST interface.
      *
      * @return "API is up and running"
      */
@@ -38,7 +47,7 @@ public class FileUploadService {
     }
 
     /**
-     * Handle Cross-Origin Resource Sharing (CORS)
+     * Handle Cross-Origin Resource Sharing (CORS).
      *
      * @return Status.OK
      */
@@ -54,7 +63,7 @@ public class FileUploadService {
     }
 
     /**
-     *  File uploader
+     *  File uploader.
      *
      * @param input file information
      * @param slSource the provider
@@ -108,7 +117,7 @@ public class FileUploadService {
     }
 
     /**
-     * Get the fileName
+     * Get the fileName.
      *
      * @param headers information from the UploadForm
      * @return fileName
@@ -132,7 +141,7 @@ public class FileUploadService {
     }
 
     /**
-     * Save file
+     * Save file.
      *
      * @param inputStream the Data of the file
      * @param fileName the name of the file
@@ -155,12 +164,15 @@ public class FileUploadService {
             logger.error(ex.getMessage());
         } finally {
             try {
-                if (outputStream != null) outputStream.close();
-                if (inputStream != null) inputStream.close();
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+                if (inputStream != null) {
+                    inputStream.close();
+                }
             } catch (IOException ex) {
                 logger.error(ex.getMessage());
             }
         }
     }
 }
-
