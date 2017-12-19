@@ -1,6 +1,9 @@
 package com.github.bfh.study.slb.domain.entities;
 
 import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
 
 import javax.persistence.Entity;
 
@@ -12,6 +15,7 @@ import javax.persistence.Entity;
 @Entity
 public class CitizenInfo extends BaseEntity {
 
+    @Field(index = Index.YES, analyze = Analyze.YES)
     private String country;
 
     /**

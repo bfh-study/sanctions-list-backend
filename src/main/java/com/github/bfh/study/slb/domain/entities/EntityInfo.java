@@ -1,10 +1,13 @@
 package com.github.bfh.study.slb.domain.entities;
 
 import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Store;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+
 
 /**
  * information about a entity. Like names, function or title.
@@ -16,10 +19,13 @@ public class EntityInfo extends BaseEntity {
 
     private int sourceId;
 
+    @Field(store = Store.YES)
     private String firstName;
 
+    @Field(store = Store.YES)
     private String lastName;
 
+    @Field(store = Store.YES)
     private String wholeName;
 
     private Character gender;

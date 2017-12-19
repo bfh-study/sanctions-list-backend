@@ -1,8 +1,11 @@
 package com.github.bfh.study.slb.domain.entities;
 
 import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Store;
 
 import javax.persistence.Entity;
+
 
 /**
  * Represents passport info.
@@ -12,8 +15,10 @@ import javax.persistence.Entity;
 @Entity
 public class PassportInfo extends BaseEntity {
 
+    @Field(store = Store.YES)
     private String number;
 
+    @Field(store = Store.YES)
     private String country;
 
     /**

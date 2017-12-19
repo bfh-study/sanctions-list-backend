@@ -1,5 +1,18 @@
 package com.github.bfh.study.slb.domain.entities;
 
+import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
+import org.apache.lucene.analysis.core.WhitespaceTokenizerFactory;
+import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
+import org.hibernate.search.annotations.Analyzer;
+import org.hibernate.search.annotations.AnalyzerDef;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.annotations.Parameter;
+import org.hibernate.search.annotations.Store;
+import org.hibernate.search.annotations.TokenFilterDef;
+import org.hibernate.search.annotations.TokenizerDef;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,22 +29,42 @@ import javax.persistence.Transient;
  * @author Samuel Ackermann
  */
 @Entity
+@Indexed
+@AnalyzerDef( name = "searchAnalyzer",
+    tokenizer = @TokenizerDef(factory = WhitespaceTokenizerFactory.class),
+    filters = {
+        @TokenFilterDef(factory = LowerCaseFilterFactory.class),
+        @TokenFilterDef(
+            factory = EdgeNGramFilterFactory.class,
+            params = {
+                @Parameter(name = "minGramSize", value = "3"),
+                @Parameter(name = "maxGramSize", value = "50")
+            }
+        )
+    }
+)
+@Analyzer(definition = "searchAnalyzer")
 public class SanctionEntity extends SanctionBaseEntity {
 
     @Transient
     private String sanctionIdentifier;
 
+    @Field(store = Store.YES)
     private String country;
 
+    @IndexedEmbedded
     @OneToMany(cascade = CascadeType.ALL)
     private List<EntityInfo> entityInfoList;
 
+    @IndexedEmbedded
     @OneToMany(cascade = CascadeType.ALL)
     private Set<BirthInfo> birthInfoList;
 
+    @IndexedEmbedded
     @OneToMany(cascade = CascadeType.ALL)
     private Set<PassportInfo> passportInfoSet;
 
+    @IndexedEmbedded
     @ManyToOne
     private SanctionProgram sanctionProgram;
 
@@ -40,7 +73,7 @@ public class SanctionEntity extends SanctionBaseEntity {
      *
      * @param sourceId internal source identifier
      * @param sanctionIdentifier identifier of a sanction program. Is an internal number.
-     * @param country contry of this entity.
+     * @param country country of this entity.
      */
     public SanctionEntity(int sourceId, String sanctionIdentifier, String country) {
         super(sourceId);
@@ -49,6 +82,10 @@ public class SanctionEntity extends SanctionBaseEntity {
         entityInfoList = new ArrayList<>();
         birthInfoList = new HashSet<>();
         passportInfoSet = new HashSet<>();
+    }
+
+    public SanctionEntity() {
+        this(0, "", "");
     }
 
     public String getSanctionIdentifier() {
