@@ -4,7 +4,7 @@ import com.github.bfh.study.slb.provider.eu.entities.Entity;
 import com.github.bfh.study.slb.provider.seco.entities.SanctionProgram;
 import com.github.bfh.study.slb.provider.seco.entities.SwissSanctionsList;
 import java.net.URI;
-import java.net.URL;
+
 import org.testng.annotations.Test;
 
 import javax.xml.bind.JAXBContext;

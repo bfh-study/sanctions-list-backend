@@ -101,6 +101,16 @@
         </dependency>
         <dependency>
             <groupId>org.wildfly.swarm</groupId>
+            <artifactId>jaxrs-multipart</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>resteasy-jaxrs</artifactId>
+                    <groupId>org.jboss.resteasy</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
             <artifactId>cdi</artifactId>
         </dependency>
         <dependency>
