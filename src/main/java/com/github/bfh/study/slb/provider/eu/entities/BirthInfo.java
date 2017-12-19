@@ -1,5 +1,6 @@
 package com.github.bfh.study.slb.provider.eu.entities;
 
+import java.time.LocalDate;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -17,8 +18,12 @@ public class BirthInfo extends SubEntry {
     @XmlElement(name = "COUNTRY")
     private String country;
 
-    public XMLGregorianCalendar getDate() {
-        return date;
+    public LocalDate getDate() {
+        if (date == null || date.getMonth() < 1 || date.getMonth() > 12) {
+            return null;
+        }
+
+        return LocalDate.of(date.getYear(), date.getMonth(), date.getDay());
     }
 
     public String getPlace() {

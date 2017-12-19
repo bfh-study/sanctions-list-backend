@@ -7,7 +7,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
 /**
- * Created by samuel on 08.11.17.
+ * Represents a sanction set.
+ *
+ * @author Samuel Ackermann
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 public class SanctionSet extends SimpleType {

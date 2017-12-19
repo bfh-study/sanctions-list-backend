@@ -27,8 +27,12 @@ public class SwissSanctionsList {
     @XmlElement(name = "sanctions-program")
     private List<SanctionProgram> sanctionPrograms;
 
+    @XmlElement(name = "target")
+    private List<Target> targets;
+
     public SwissSanctionsList() {
         sanctionPrograms = new ArrayList<>();
+        targets = new ArrayList<>();
     }
 
     public XMLGregorianCalendar getDate() {
@@ -41,5 +45,9 @@ public class SwissSanctionsList {
 
     public List<SanctionProgram> getSanctionPrograms() {
         return sanctionPrograms;
+    }
+
+    public List<Target> getTargets() {
+        return targets;
     }
 }

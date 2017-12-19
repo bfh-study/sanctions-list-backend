@@ -2,6 +2,8 @@ package com.github.bfh.study.slb.imports;
 
 import com.github.bfh.study.slb.imports.parser.ProcessingElement;
 
+import org.bitbucket.samsamann.rest.base.entities.BaseEntity;
+
 import java.util.List;
 
 /**
@@ -11,7 +13,7 @@ import java.util.List;
  */
 public interface Import {
 
-    int doSomeStuff(int number1, int number2);
+    BaseEntity convertEntity(Object object);
 
     List<ProcessingElement> getProcessingElements();
 }

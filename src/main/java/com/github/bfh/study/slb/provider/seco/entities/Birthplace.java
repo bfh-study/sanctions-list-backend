@@ -5,17 +5,17 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
 /**
- * SSID type.
+ * Represents a birthplace of a sanctioned person.
  *
  * @author Samuel Ackermann
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SSIDType {
+public class Birthplace extends SSIDType {
 
-    @XmlAttribute(required = true)
-    private int ssid;
+    @XmlAttribute(required = true, name = "place-id")
+    private int placeId;
 
-    public int getSsid() {
-        return ssid;
+    public int getPlaceId() {
+        return placeId;
     }
 }

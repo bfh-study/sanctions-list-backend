@@ -3,7 +3,6 @@ package com.github.bfh.study.slb.app;
 import io.crnk.core.engine.document.ErrorData;
 import io.crnk.core.engine.error.ErrorResponse;
 import io.crnk.core.engine.error.ExceptionMapper;
-
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.batch.operations.JobStartException;

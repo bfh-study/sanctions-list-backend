@@ -7,6 +7,11 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+/**
+ * Represents a sanction import.
+ *
+ * @author Samuel Ackermann
+ */
 @Entity
 public class SanctionListImport extends BaseEntity {
 
