@@ -37,4 +37,12 @@ public class PassportInfo extends BaseEntity {
         this.number = number.substring(0, Math.min(number.length(), 255));
         this.country = country;
     }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getCountry() {
+        return country;
+    }
 }

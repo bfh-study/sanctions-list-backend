@@ -1,5 +1,6 @@
 package com.github.bfh.study.slb.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.lucene.analysis.core.LowerCaseFilterFactory;
 import org.apache.lucene.analysis.core.WhitespaceTokenizerFactory;
 import org.apache.lucene.analysis.ngram.EdgeNGramFilterFactory;
@@ -47,6 +48,7 @@ import javax.persistence.Transient;
 public class SanctionEntity extends SanctionBaseEntity {
 
     @Transient
+    @JsonIgnore
     private String sanctionIdentifier;
 
     @Field(store = Store.YES)
@@ -126,5 +128,40 @@ public class SanctionEntity extends SanctionBaseEntity {
      */
     public void setSanctionProgram(SanctionProgram sanctionProgram) {
         this.sanctionProgram = sanctionProgram;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public List<EntityInfo> getEntityInfoList() {
+        return entityInfoList;
+    }
+
+    public Set<BirthInfo> getBirthInfoList() {
+        return birthInfoList;
+    }
+
+    public Set<PassportInfo> getPassportInfoSet() {
+        return passportInfoSet;
+    }
+
+    public SanctionProgram getSanctionProgram() {
+        return sanctionProgram;
+    }
+
+    public static String[] getSearchFields() {
+        String[] fields = {
+            "country",
+            "entityInfoList.firstName",
+            "entityInfoList.lastName",
+            "entityInfoList.wholeName",
+            "birthInfoList.place",
+            "birthInfoList.country",
+            "passportInfoSet.number",
+            "passportInfoSet.country"
+        };
+
+        return fields;
     }
 }
