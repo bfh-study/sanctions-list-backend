@@ -3,11 +3,14 @@
     <step id ="prepare" next="process">
         <batchlet ref="prepareBatchlet" />
     </step>
-    <step id="process">
+    <step id="process" next="finish">
         <chunk item-count="10">
             <reader ref="xmlItemReader" />
             <processor ref="entityProcessor"/>
             <writer ref="dbItemWriter" />
         </chunk>
+    </step>
+    <step id ="finish">
+        <batchlet ref="removeFile" />
     </step>
 </job>

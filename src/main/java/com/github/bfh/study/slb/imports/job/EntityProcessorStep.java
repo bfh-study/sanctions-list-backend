@@ -10,25 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.batch.api.chunk.ItemProcessor;
-import javax.batch.runtime.context.JobContext;
-import javax.inject.Inject;
 
 /**
  * convert items from the different sources into domain entities.
  *
  * @author Samuel Ackermann
  */
-public class EntityProcessor implements ItemProcessor {
-
-    @Inject
-    private JobContext jobContext;
-
-    private ImportContext context;
+public class EntityProcessorStep extends BaseStep implements ItemProcessor {
 
     private List<SanctionProgram> sanctionPrograms;
 
-    public EntityProcessor() {
-        context = null;
+    public EntityProcessorStep() {
         sanctionPrograms = new ArrayList<>();
     }
 
@@ -40,7 +32,11 @@ public class EntityProcessor implements ItemProcessor {
 
         BaseEntity baseEntity = context.convertEntity(item);
         if (baseEntity instanceof SanctionProgram) {
-            sanctionPrograms.add((SanctionProgram) baseEntity);
+            SanctionProgram sanctionProgram = (SanctionProgram) baseEntity;
+            sanctionProgram.getEntities().forEach(entity -> {
+                entity.setSanctionProgram(sanctionProgram);
+            });
+            sanctionPrograms.add(sanctionProgram);
         } else if (baseEntity instanceof SanctionEntity) {
             SanctionEntity entity = (SanctionEntity) baseEntity;
             Optional<SanctionProgram> optional = sanctionPrograms.stream()
