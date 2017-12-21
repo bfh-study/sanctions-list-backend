@@ -42,8 +42,7 @@ import javax.persistence.Transient;
                 @Parameter(name = "maxGramSize", value = "50")
             }
         )
-    }
-)
+    })
 @Analyzer(definition = "searchAnalyzer")
 public class SanctionEntity extends SanctionBaseEntity {
 
@@ -150,6 +149,11 @@ public class SanctionEntity extends SanctionBaseEntity {
         return sanctionProgram;
     }
 
+    /**
+     * returns all searchable fields.
+     *
+     * @return all searchable fields
+     */
     public static String[] getSearchFields() {
         String[] fields = {
             "country",

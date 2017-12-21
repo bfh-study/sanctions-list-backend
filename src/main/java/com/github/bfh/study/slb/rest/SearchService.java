@@ -1,6 +1,11 @@
 package com.github.bfh.study.slb.rest;
 
 import com.github.bfh.study.slb.domain.entities.SanctionEntity;
+
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.jpa.FullTextQuery;
+import org.hibernate.search.query.dsl.QueryBuilder;
+
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -9,16 +14,24 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import org.hibernate.search.jpa.FullTextEntityManager;
-import org.hibernate.search.jpa.FullTextQuery;
-import org.hibernate.search.query.dsl.QueryBuilder;
 
+/**
+ * search service.
+ *
+ * @author Dario Carosella
+ */
 @Path("search")
 public class SearchService {
 
     @Inject
     private FullTextEntityManager fullTextEntityManager;
 
+    /**
+     * search endpoint.
+     *
+     * @param queryString search string
+     * @return response with a list of all founded entities.
+     */
     @GET
     public Response search(@QueryParam("query") String queryString) {
         QueryBuilder qb = fullTextEntityManager.getSearchFactory()

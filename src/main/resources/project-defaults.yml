@@ -19,4 +19,4 @@ samsamann:
     package-scan: "com.github.bfh.study.slb.domain"
 sanction-list:
   max-allowed-score: "1.5F"
-  tmp-dir-path: ""
+  tmp-dir-path: "/tmp/"

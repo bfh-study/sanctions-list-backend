@@ -33,7 +33,7 @@ public class EntityInfo extends BaseEntity {
     private String title;
 
     @Lob
-    @Column(columnDefinition="TEXT")
+    @Column(columnDefinition = "TEXT")
     private String function;
 
     private String language;
@@ -41,7 +41,7 @@ public class EntityInfo extends BaseEntity {
     /**
      * default constructor (for persisting purpose).
      */
-    EntityInfo(){
+    EntityInfo() {
     }
 
     /**
