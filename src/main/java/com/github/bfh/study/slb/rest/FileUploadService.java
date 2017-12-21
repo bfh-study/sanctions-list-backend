@@ -1,7 +1,6 @@
 package com.github.bfh.study.slb.rest;
 
-import com.github.bfh.study.slb.imports.job.PrepareStep;
-import com.github.bfh.study.slb.imports.job.XmlReader;
+import com.github.bfh.study.slb.imports.job.JobProperties;
 
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
@@ -39,8 +38,6 @@ import javax.ws.rs.core.Response.Status;
 public class FileUploadService {
 
     private static final Logger logger = LoggerFactory.getLogger(FileUploadService.class);
-
-    private static final String JOB_NAME = "importXmlJob";
 
     private static final String TMP_PATH_PROPERTY = "sanction-list.tmp-dir-path";
 
@@ -115,10 +112,10 @@ public class FileUploadService {
 
                 JobOperator operator =  BatchRuntime.getJobOperator();
                 Properties jobProperties = new Properties();
-                jobProperties.setProperty(PrepareStep.SOURCE_NAME_PROPERTY, slSource);
-                jobProperties.setProperty(XmlReader.PATH_NAME_PROPERTY, fileName);
+                jobProperties.setProperty(JobProperties.SOURCE_NAME_PROPERTY, slSource);
+                jobProperties.setProperty(JobProperties.PATH_NAME_PROPERTY, fileName);
 
-                operator.start(JOB_NAME, jobProperties);
+                operator.start(JobProperties.JOB_NAME, jobProperties);
                 logger.info("upload was successful");
             } catch (IOException ex) {
                 logger.error(ex.getMessage());
@@ -170,7 +167,6 @@ public class FileUploadService {
     private void saveFile(InputStream inputStream, String fileName) {
         OutputStream outputStream = null;
         try {
-            outputStream = new FileOutputStream(new File(fileName));
             int read;
             byte[] bytes = new byte[1024 * 1024 * 8];
 
@@ -180,7 +176,6 @@ public class FileUploadService {
             }
 
             outputStream.flush();
-            outputStream.close();
         } catch (IOException ex) {
             logger.error(ex.getMessage());
         } finally {
