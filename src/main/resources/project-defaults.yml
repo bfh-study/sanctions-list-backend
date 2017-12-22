@@ -1,0 +1,31 @@
+logger:
+    level: INFO
+swarm:
+  datasources:
+    data-sources:
+      defaultDB:
+        user-name: "sa"
+        connection-url: "jdbc:h2:/tmp/sanction"
+        driver-name: "h2"
+  ds:
+    name: "defaultDB"
+  batch-jberet:
+    default-job-repository: "jobRepo"
+    jdbc-job-repositories:
+      jobRepo:
+        data-source: "defaultDB"
+  http:
+    port: 8080
+  undertow:
+    servers:
+      default-server:
+        http-listeners:
+          default:
+            max-post-size: 14680064
+            socket-binding: http
+samsamann:
+  rest:
+    package-scan: "com.github.bfh.study.slb.domain"
+sanction-list:
+  max-allowed-score: "1.5F"
+  tmp-dir-path: "/tmp/"

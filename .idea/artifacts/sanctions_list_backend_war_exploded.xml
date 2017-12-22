@@ -1,0 +1,125 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="sanctions-list-backend:war exploded">
+    <output-path>$PROJECT_DIR$/target/sanctions-list-backend</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="sanctions-list-backend" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.0" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:jaxrs:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:container:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:spi:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap:shrinkwrap-api:1.2.6" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap:shrinkwrap-impl-base:1.2.6" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap:shrinkwrap-spi:1.2.6" />
+          <element id="library" level="project" name="Maven: org.jboss:jandex:2.0.2.Final" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:config-api:1.1.0.Final" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:config-api-runtime:1.1.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.0.Final" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:logging:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:undertow:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:io:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:request-controller:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-jboss:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-jboss:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-javaee:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-api-base:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-javaee:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-impl-base:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.shrinkwrap.descriptors:shrinkwrap-descriptors-spi:2.0.0" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.websocket:jboss-websocket-api_1.1_spec:1.1.1.Final" />
+          <element id="library" level="project" name="Maven: io.undertow:undertow-servlet:1.4.11.Final" />
+          <element id="library" level="project" name="Maven: io.undertow:undertow-core:1.4.11.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.xnio:xnio-api:3.3.6.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.xnio:xnio-nio:3.3.6.Final" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:security:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.annotation:jboss-annotations-api_1.2_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:jaxrs-cdi:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm-all:5.0.4" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.7.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.7.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.7.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.7.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:2.7.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.7.4" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:meta-spi:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:jaxrs-multipart:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-multipart-provider:3.0.19.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-client:3.0.19.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-jaxb-provider:3.0.19.Final" />
+          <element id="library" level="project" name="Maven: org.apache.james:apache-mime4j:0.6" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.1.1" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:cdi:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:cdi-config:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:bean-validation:2017.10.0" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:1.1.0.Final" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:ee:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:naming:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.enterprise.concurrent:jboss-concurrency-api_1.0_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.el:jboss-el-api_3.0_spec:1.0.7.Final" />
+          <element id="library" level="project" name="Maven: org.glassfish:javax.el-impl:3.0.1-b08-jbossorg-1" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:transactions:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.narayana.jts:narayana-jts-idlj:5.3.3.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.openjdk-orb:openjdk-orb:8.0.4.Final" />
+          <element id="library" level="project" name="Maven: javax.enterprise:cdi-api:1.2" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:jpa:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:datasources:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:jca:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:connector:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.resource:jboss-connector-api_1.7_spec:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.ironjacamar:ironjacamar-jdbc:1.3.4.Final" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:bootstrap:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.jboss.modules:jboss-modules:1.5.2.Final" />
+          <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.17" />
+          <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:batch-jberet:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.wildfly.common:wildfly-common:1.1.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.spec.javax.batch:jboss-batch-api_1.0_spec:1.0.0.Final" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/bitbucket/samsamann/rest-core/0.2.0-SNAPSHOT/rest-core-0.2.0-20171010.121624-1.jar" output-file-name="rest-core-0.2.0-SNAPSHOT.jar" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/org/bitbucket/samsamann/rest-base/0.2.0-SNAPSHOT/rest-base-0.2.0-20171010.121619-1.jar" output-file-name="rest-base-0.2.0-SNAPSHOT.jar" />
+          <element id="library" level="project" name="Maven: io.crnk:crnk-core:2.1.20171003194426" />
+          <element id="library" level="project" name="Maven: net.jodah:typetools:0.4.4" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: org.reflections:reflections:0.9.11" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava:20.0" />
+          <element id="library" level="project" name="Maven: io.crnk:crnk-rs:2.1.20171003194426" />
+          <element id="library" level="project" name="Maven: io.crnk:crnk-jpa:2.1.20171003194426" />
+          <element id="library" level="project" name="Maven: io.crnk:crnk-meta:2.1.20171003194426" />
+          <element id="library" level="project" name="Maven: io.crnk:crnk-validation:2.1.20171003194426" />
+          <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:6.0.2.Final" />
+          <element id="library" level="project" name="Maven: com.fasterxml:classmate:1.3.1" />
+          <element id="library" level="project" name="Maven: com.h2database:h2:1.4.196" />
+          <element id="library" level="project" name="Maven: org.wildfly.swarm:hibernate-search:2017.10.0" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-search-orm:5.5.4.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-search-engine:5.5.4.Final" />
+          <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-core:5.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-backward-codecs:5.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-misc:5.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-analyzers-common:5.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-facet:5.3.1" />
+          <element id="library" level="project" name="Maven: org.apache.lucene:lucene-queries:5.3.1" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-search-serialization-avro:5.5.4.Final" />
+          <element id="library" level="project" name="Maven: org.apache.avro:avro:1.7.6" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: com.thoughtworks.paranamer:paranamer:2.3" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-compress:1.4.1" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.21.0-GA" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/sanctions-list-backend/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="sanctions-list-backend/web/Web" />
+    </root>
+  </artifact>
+</component>

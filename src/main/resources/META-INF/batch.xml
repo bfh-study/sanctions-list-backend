@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<batch-artifacts xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+  <ref id="xmlItemReader" class="com.github.bfh.study.slb.imports.job.XmlReaderStep" />
+  <ref id="entityProcessor" class="com.github.bfh.study.slb.imports.job.EntityProcessorStep" />
+  <ref id="dbItemWriter" class="com.github.bfh.study.slb.imports.job.ItemWriterStep" />
+  <ref id="prepareBatchlet" class="com.github.bfh.study.slb.imports.job.PrepareStep" />
+  <ref id="removeFile" class="com.github.bfh.study.slb.imports.job.RemoveFileStep" />
+</batch-artifacts>
