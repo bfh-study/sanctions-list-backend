@@ -24,9 +24,6 @@ public class SanctionProgram extends SanctionBaseEntity {
 
     private LocalDate date;
 
-    @OneToOne
-    private SanctionListImport listImport;
-
     //@OneToMany(cascade = CascadeType.ALL)
     //@JoinTable(name = "")
     //private Set<TranslatedText> shortDescription;
@@ -37,6 +34,13 @@ public class SanctionProgram extends SanctionBaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<SanctionEntity> entities;
+
+    /**
+     * default constructor.
+     */
+    public SanctionProgram() {
+        this(-1, "");
+    }
 
     /**
      * constructor.
@@ -70,14 +74,6 @@ public class SanctionProgram extends SanctionBaseEntity {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public SanctionListImport getListImport() {
-        return listImport;
-    }
-
-    public void setListImport(SanctionListImport listImport) {
-        this.listImport = listImport;
     }
 
     public void addEntity(SanctionEntity entity) {

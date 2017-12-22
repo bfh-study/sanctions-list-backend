@@ -11,8 +11,6 @@ import java.io.Serializable;
 import java.util.Properties;
 import javax.batch.api.chunk.ItemReader;
 import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.context.JobContext;
-import javax.inject.Inject;
 import javax.xml.stream.XMLStreamException;
 
 /**
@@ -20,16 +18,11 @@ import javax.xml.stream.XMLStreamException;
  *
  * @author Samuel Ackermann
  */
-public class XmlReader extends ReaderWriterBase implements ItemReader {
+public class XmlReaderStep extends BaseStep implements ItemReader {
 
-    public static final String PATH_NAME_PROPERTY = "path_name";
-
-    private static final Logger logger = LoggerFactory.getLogger(XmlReader.class);
+    private static final Logger logger = LoggerFactory.getLogger(XmlReaderStep.class);
 
     private PartialXmlParser parser;
-
-    @Inject
-    private JobContext jobContext;
 
     @Override
     public void open(Serializable checkpoint) throws Exception {
@@ -47,13 +40,15 @@ public class XmlReader extends ReaderWriterBase implements ItemReader {
 
         Properties properties = BatchRuntime.getJobOperator().getParameters(
             jobContext.getExecutionId());
-        if (!properties.containsKey(PATH_NAME_PROPERTY)) {
-            abortExecution(String.format("No property found with name '%s'", PATH_NAME_PROPERTY));
+        if (!properties.containsKey(JobProperties.PATH_NAME_PROPERTY)) {
+            abortExecution(
+                String.format("No property found with name '%s'", JobProperties.PATH_NAME_PROPERTY)
+            );
         }
 
         parser = new PartialXmlParser(context.getProcessingElements());
         try {
-            parser.open(properties.getProperty(PATH_NAME_PROPERTY));
+            parser.open(properties.getProperty(JobProperties.PATH_NAME_PROPERTY));
         } catch (FileNotFoundException | XMLStreamException e) {
             logger.error("Execution failed... Reason: " + e.getMessage());
             abortExecution("Can not open file/path");

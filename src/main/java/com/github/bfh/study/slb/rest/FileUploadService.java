@@ -1,5 +1,7 @@
 package com.github.bfh.study.slb.rest;
 
+import com.github.bfh.study.slb.imports.job.JobProperties;
+
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.slf4j.Logger;
@@ -12,6 +14,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+import javax.batch.operations.JobOperator;
+import javax.batch.runtime.BatchRuntime;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.OPTIONS;
@@ -21,6 +26,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
 /**
@@ -32,7 +38,8 @@ import javax.ws.rs.core.Response.Status;
 public class FileUploadService {
 
     private static final Logger logger = LoggerFactory.getLogger(FileUploadService.class);
-    private static final String SERVER_UPLOAD_LOCATION_FOLDER = "src/main/resources/uploads/";
+
+    private static final String TMP_PATH_PROPERTY = "sanction-list.tmp-dir-path";
 
     /**
      * Test REST interface.
@@ -78,10 +85,18 @@ public class FileUploadService {
 
         logger.info("Starting fileUploader for " + slSource + " source");
 
+        String tmpPath = System.getProperty(TMP_PATH_PROPERTY);
+        if (tmpPath == null) {
+            return Response.serverError().build();
+        }
+
         Map<String, List<InputPart>> formData = input.getFormDataMap();
         List<InputPart> inputParts = formData.get("file");
         InputStream inputStream = null;
 
+        ResponseBuilder responseBuilder = Response.status(Status.OK)
+            .header("Access-Control-Allow-Origin", "*")
+            .header("Access-Control-Allow-Methods", "POST");
         for (InputPart inputPart : inputParts) {
             try {
                 MultivaluedMap<String, String> headers = inputPart.getHeaders();
@@ -92,10 +107,19 @@ public class FileUploadService {
 
                 logger.info("Uploading file, " + fileName + " to server");
 
-                fileName = SERVER_UPLOAD_LOCATION_FOLDER + fileName;
+                fileName = tmpPath + fileName;
                 saveFile(inputStream, fileName);
+
+                JobOperator operator =  BatchRuntime.getJobOperator();
+                Properties jobProperties = new Properties();
+                jobProperties.setProperty(JobProperties.SOURCE_NAME_PROPERTY, slSource);
+                jobProperties.setProperty(JobProperties.PATH_NAME_PROPERTY, fileName);
+
+                operator.start(JobProperties.JOB_NAME, jobProperties);
+                logger.info("upload was successful");
             } catch (IOException ex) {
                 logger.error(ex.getMessage());
+                responseBuilder.status(Status.INTERNAL_SERVER_ERROR);
             } finally {
                 if (inputStream != null) {
                     try {
@@ -107,13 +131,7 @@ public class FileUploadService {
             }
         }
 
-        logger.info("upload was successful");
-
-        return Response
-                .status(Status.OK)
-                .header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Methods", "POST")
-                .build();
+        return responseBuilder.build();
     }
 
     /**
@@ -149,9 +167,8 @@ public class FileUploadService {
     private void saveFile(InputStream inputStream, String fileName) {
         OutputStream outputStream = null;
         try {
-            outputStream = new FileOutputStream(new File(fileName));
             int read;
-            byte[] bytes = new byte[1024];
+            byte[] bytes = new byte[1024 * 1024 * 16];
 
             outputStream = new FileOutputStream(new File(fileName));
             while (-1 != (read = inputStream.read(bytes))) {
@@ -159,7 +176,6 @@ public class FileUploadService {
             }
 
             outputStream.flush();
-            outputStream.close();
         } catch (IOException ex) {
             logger.error(ex.getMessage());
         } finally {

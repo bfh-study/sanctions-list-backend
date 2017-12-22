@@ -14,6 +14,18 @@ swarm:
     jdbc-job-repositories:
       jobRepo:
         data-source: "defaultDB"
+  http:
+    port: 8080
+  undertow:
+    servers:
+      default-server:
+        http-listeners:
+          default:
+            max-post-size: 14680064
+            socket-binding: http
 samsamann:
   rest:
     package-scan: "com.github.bfh.study.slb.domain"
+sanction-list:
+  max-allowed-score: "1.5F"
+  tmp-dir-path: "/tmp/"
