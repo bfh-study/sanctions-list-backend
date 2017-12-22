@@ -168,7 +168,7 @@ public class FileUploadService {
         OutputStream outputStream = null;
         try {
             int read;
-            byte[] bytes = new byte[1024 * 1024 * 8];
+            byte[] bytes = new byte[1024 * 1024 * 16];
 
             outputStream = new FileOutputStream(new File(fileName));
             while (-1 != (read = inputStream.read(bytes))) {
