@@ -36,6 +36,13 @@ public class SanctionProgram extends SanctionBaseEntity {
     private List<SanctionEntity> entities;
 
     /**
+     * default constructor.
+     */
+    public SanctionProgram() {
+        this(-1, "");
+    }
+
+    /**
      * constructor.
      *
      * @param sourceEntityId internal source identifier
